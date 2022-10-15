@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, useNavigate} from "react-router-dom"
+import Login from "./Container/Login";
+import Home from "./Container/Home"
+import { useEffect, useState } from 'react';
+import { userAccessToken, fetchUser } from './utils/fetch';
 
 function App() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    
+    const accesstoken = userAccessToken();
+    if (!accesstoken) {
+     navigate("/login", {replace : true});
+    } else {
+      const userinfo = fetchUser();
+      setUser(userinfo);
+    }
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path= "/login" exact element={<Login />} />
+      <Route path="/*" element={<Home user={user} />} />
+    </Routes>
   );
 }
 
