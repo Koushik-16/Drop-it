@@ -49,9 +49,9 @@ function VideoPin(props) {
          
             <Text color = {textColor}  fontSize={"15px"} >{props.data.title.substring(0,Math.min(10,props.data.title.length))}  </Text>
             <Link to={`/userDetails/${userId}`} >
-               <Image src = {userInfo?.photoURL} rounded = "full" width ="35px" border = "2px" borderColor={bg} mt = {"-2.3vw"}  />
+               <Image src = {userInfo?.photoURL} rounded = "full" width ="35px" border = "2px" borderColor={bg} mt = {"-2.3vw"} referrerPolicy='no-referrer' />
             </Link>
-        </Flex   >
+        </Flex>
         <Text mb={"0.5vh"} fontSize={"12px"} color = {textColor} ml = "auto" >{moment(new Date(parseInt(props.data.id)).toISOString()).fromNow()}</Text>
 
       </Flex>

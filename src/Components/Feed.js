@@ -35,13 +35,13 @@ function Feed() {
   }, [catagoryId]);
 
 
-  if(loading) return (<Spinner  msg = {"Loading your feeds"}/>);
+  if(loading) return (<Flex mt= "20vh"> <Spinner  msg = {"Loading your feeds"}/>  </Flex>);
   if (!feeds?.length > 0) return <NotFound />;
 
 
   return (
     
-    <SimpleGrid  minChildWidth='300px'   spacing='5px' width={"full"}autoColumns ={"max-content"} px = "2px" overflowX={"hidden"} justifyContent = "center" alignItems ="center"   >
+    <SimpleGrid  minChildWidth='300px'   spacing='5px' width={"full"} autoColumns ={"max-content"} px = "2px" overflowX={"hidden"} justifyContent = "center" alignItems ="center"   >
       
          {feeds && feeds.map((data) => (<Flex direction={"column"} justifyContent = "center" alignItems={"center"} key = {data.id}  ><VideoPin  maxWidth = {"400px"} height = "100px"  data = {data}  /> </Flex>))}
         

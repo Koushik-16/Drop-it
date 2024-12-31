@@ -89,8 +89,8 @@ const VideoPinDetail = () => {
   const [seeking, setSeeking] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [feeds, setFeeds] = useState(null);
-  const [full, setFull] = useState("350px");
-  
+  const [full, setFull] = useState(screenfull.isFullscreen);
+
 
   // Custom reference
   const playerRef = useRef();
@@ -201,6 +201,7 @@ const VideoPinDetail = () => {
         <GridItem width={"100%"} colSpan="2">
           <Flex
            width={"full"}
+          //  maxHeight = "460px"
            ref={playerContainer}
             bg="black"
             position="relative"
@@ -209,9 +210,10 @@ const VideoPinDetail = () => {
           >
             <ReactPlayer
            className = "vid"
+         
               ref={playerRef}
               url={videoInfo?.videoURL}
-              height= {full}
+              height= {full ? "100%" : "350px" }
               width="100%"
             
               playing={isPlaying}
@@ -370,8 +372,8 @@ const VideoPinDetail = () => {
                     cursor={"pointer"}
                     onClick={ () => {
 
-                      if(screenfull.isFullscreen==false)  setFull("100%");
-                      else  setFull("350px");
+                      if(screenfull.isFullscreen === false)  setFull(true);
+                      else  setFull(false);
                      
                       screenfull.toggle(playerContainer.current);
                       

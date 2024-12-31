@@ -82,7 +82,7 @@ function Create() {
           setLoading(false);
           setAlert(true);
           setAlertStatus("Success");
-          setAlertMsg("Your video is uploaded successfully");
+          setAlertMsg("Your video has been uploaded successfully");
           setAlertIcon(<IoCheckmark fontSize={25}/>)
 
           setTimeout(() => {
@@ -188,7 +188,6 @@ function Create() {
 
   function cancelUpload(){
     uploadTask.cancel();
-   console.log("upload canceled");
     setMsg("Uploading your video");
     setVideoAsset(null);
     setPause(false);
@@ -203,6 +202,7 @@ function Create() {
   const { colorMode } = useColorMode();
   const bg = useColorModeValue('gray.50', 'gray.900');
   const textColor = useColorModeValue('gray.900', 'gray.50');
+  
   return (
     <Flex justifyContent={"center"} alignItems='center' width={'full'} minHeight="100vh"
       paddingRight={"5px"} py="5"
@@ -355,7 +355,7 @@ function Create() {
                 name='upload_image'
                 onChange={uploadImage}
                 style={{ width: 0, height: 0 }}
-                accept="video/mp4 , video/x-miv , video/*"
+                accept="video/mp4 , video/x-m4v , video/*"
               />)}
 
             </FormLabel>

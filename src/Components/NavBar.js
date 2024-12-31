@@ -55,7 +55,7 @@ function NavBar(props) {
 
         <Menu>
   <MenuButton >
-     <ProfileImage link = { props.user ?   props.user[0].photoURL : image} /> 
+     <ProfileImage link = { props.user &&   props.user[0].photoURL !== null ? props.user[0].photoURL  : image} /> 
   </MenuButton>
   <MenuList  shadow={"lg"}>
     
@@ -70,7 +70,7 @@ function NavBar(props) {
      gap={"4"}
      onClick= {() => {
         localStorage.clear();
-      
+    
      }}
      >Logout <IoLogOut fontSize={"20px"}/></MenuItem>
     </Link>

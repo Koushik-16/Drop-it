@@ -9,9 +9,9 @@ import { gertUserInfo, userUploadedVideos } from "../utils/fetchData";
 import Feed from "./Feed.js";
 import RecommendedVideos from "./RecommendedVideos";
 import Spinner from "./Spinner.js";
+import random from "../img/musicbg.jpg"
 
-const randomImage =
-  "https://source.unsplash.com/1600x900/?nature,photography,technology";
+const randomImage = random;
 
 const UserProfile = () => {
   const { userId } = useParams();
